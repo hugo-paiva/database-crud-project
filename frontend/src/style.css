@@ -1,0 +1,18 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 94vh;
+    background: linear-gradient(to left, rgb(19, 155, 209), rgb(16, 204, 88));
+}
+
+main {
+    width: 40rem;
+    height: 80vh;
+    background-color: white;
+}
+
+input {
+    display: block;
+    margin: 0.4rem;
+}
