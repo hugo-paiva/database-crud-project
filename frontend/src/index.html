@@ -1,14 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="script.js" defer></script>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <p>WELCOME TO the jungle</p>
-    <input type="button" value="Veja o back" id="button" >
+    <main>
+        <p>WELCOME TO the jungle</p>
+        <input type="button" value="Veja o back" id="button" >
+        <input type="button" value="DELETAR ID 1" id="delete-button" >
+        <input type="button" value="CRIAR ID 1" id="create-button" >
+        <input type="button" value="UPDATE ID 1" id="update-button" >
+
+        <form>
+            <label for="PONTO">PONTO</label>
+            <input type="number" name="PONTO" id="number">
+            <label for="DATA">DATA</label>
+            <input type="date" name="DATA" id="date">
+            <label for="HORA">HORA</label>
+            <input type="time" name="HORA" id="time">
+            <label for="LATITUDE">LATITUDE</label>
+            <input type="number" name="LATITUDE" id="number">
+            <label for="LONGITUDE">LONGITUDE</label>
+            <input type="number" name="LONGITUDE" id="number">
+        </form>
+    </main>
 </body>
 </html>
