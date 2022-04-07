@@ -14,6 +14,7 @@ server.use(express.json())
 server.get('/get-points', database.getPoints)
 
 server.post('/create-point', database.createPoint)
+server.post('/create-point-withtime', database.createPointWithTime)
 
 server.delete('/delete-point/:id', database.deletePoint)
 

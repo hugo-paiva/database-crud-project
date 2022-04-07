@@ -30,8 +30,38 @@ function deleteOne() {
         .then(data => console.log(data))
 }
 
+// function createOne() {
+//     const rota = 'create-point'
+//     const config = {
+//         method: 'POST',
+//         headers: {
+//             'Accept': 'application/json',
+//             'Content-Type': 'application/json'
+//           },
+//         body: JSON.stringify({
+//             number: '1',
+//             date: '01-01-2020',
+//             // date: new Date().getDate(),
+//             time: '12:00',
+//             latitude: 100000,
+//             longitude: 100000
+//         }),
+//         // body: JSON.stringify({
+//         //     number: number.value,
+//         //     date: date.value,
+//         //     // date: new Date().getDate(),
+//         //     time: time.value,
+//         //     latitude: latitude.value,
+//         //     longitude: longitude.value
+//         // })
+//     }
+//     fetch(apiURL + rota, config)
+//         .then(response => response.json())
+//         .then(data => console.log(data))
+// }
+
 function createOne() {
-    const rota = 'create-point'
+    const rota = 'create-point-withtime'
     const config = {
         method: 'POST',
         headers: {
@@ -40,9 +70,8 @@ function createOne() {
           },
         body: JSON.stringify({
             number: '1',
-            date: '01-01-2020',
-            // date: new Date().getDate(),
-            time: '12:00',
+            date: '2020-01-01',
+            time: '12:00:00',
             latitude: 100000,
             longitude: 100000
         }),

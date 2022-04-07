@@ -6,7 +6,7 @@ function initClient() {
         password: 'senha',
         host: 'localhost',
         port: 5432,
-        database: 'Mapeamento_geologico'
+        database: 'geo_mapping'
     })
 }
 
@@ -23,6 +23,7 @@ async function connection(query, params = null) {
         resultado.content = res.rows
         resultado.message = 'Sua query foi executada com sucesso!'
     } catch (error) {
+        console.log(error)
         resultado.message = 'Sua query deu erro!'
     }
     console.log(resultado)
@@ -50,6 +51,30 @@ const createPoint =  async (req, res) => {
     res.json(json)
 }
 
+function timeStampDate() {
+    const date = new Date()
+    const string = `${date.getFullYear()}-${date.getMonth() + 1 < 10? '0' + (date.getMonth() + 1): (date.getMonth() + 1) }-${date.getDate() < 10 ? '0' + date.getDate() : date.getDate()}`
+    console.log(string)  
+    return string
+}
+
+const createPointWithTime =  async (req, res) => {
+    const { number, date, time, latitude, longitude } = req.body
+    const query = `
+    INSERT INTO 
+        public.points (date, time
+        , latitude, longitude, creation_time
+        , creation_date, created_user, update_time
+        , update_date, update_user, deleted, deleted_user, users_id) 
+    VALUES 
+        ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13)`
+    const json = await connection(query, [ date, time,
+         latitude, longitude, '12:00:00',
+          timeStampDate(), 'hugo', '12:00:00',
+            timeStampDate(), 'jao', 0, 'jao', 1
+])
+}
+
 const deletePoint =  async (req, res) => {
     const query = 'DELETE FROM points WHERE number = $1'
     const number = parseInt(req.params.id)
@@ -72,4 +97,5 @@ module.exports = {
     createPoint,
     deletePoint,
     updatePoint,
+    createPointWithTime
 }
