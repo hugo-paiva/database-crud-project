@@ -17,7 +17,7 @@ createButton.addEventListener('click', createOne)
 updateButton.addEventListener('click', updateOne)
 
 function pegarUmNome() {
-    const rota = 'getname'
+    const rota = 'get-points'
     fetch(apiURL + rota)
         .then(response => response.json())
         .then(data => console.log(data))
