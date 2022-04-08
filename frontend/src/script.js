@@ -5,6 +5,7 @@ const createButton = document.querySelector('#create-button')
 const updateButton = document.querySelector('#update-button')
 // number, date, time, latitude, longitude
 const number = document.querySelector('#number')
+const point = document.querySelector('#point')
 const date = document.querySelector('#date')
 const time = document.querySelector('#time')
 const latitude = document.querySelector('#latitude')
@@ -24,7 +25,7 @@ function pegarUmNome() {
 }
 
 function deleteOne() {
-    const rota = 'delete-point/1'
+    const rota = 'delete-point/' + point.value
     fetch(apiURL + rota, { method: 'DELETE' })
         .then(response => response.json())
         .then(data => console.log(data))

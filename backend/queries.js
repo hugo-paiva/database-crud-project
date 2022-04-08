@@ -32,7 +32,7 @@ async function connection(query, params = null) {
 }
 
 const getPoints = async (req, res) => {
-    const query = 'SELECT * FROM points'
+    const query = 'SELECT * FROM points WHERE deleted = false'
     const json = await connection(query)
     res.json(json)
 }
@@ -64,19 +64,19 @@ const createPointWithTime =  async (req, res) => {
     INSERT INTO 
         public.points (date, time
         , latitude, longitude, creation_time
-        , creation_date, created_user, update_time
-        , update_date, update_user, deleted, deleted_user, users_id) 
+        , created_user, update_time
+        , update_user, deleted, deleted_user, user_id) 
     VALUES 
-        ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13)`
+        ($1, $2, $3, $4, NOW(), $5, NOW(), $6, $7, $8, $9)`
     const json = await connection(query, [ date, time,
-         latitude, longitude, '12:00:00',
-          timeStampDate(), 'hugo', '12:00:00',
-            timeStampDate(), 'jao', 0, 'jao', 1
+         latitude, longitude, //now()
+         'hugo', //now()
+         'jao', false, 'jao', 1
 ])
 }
 
 const deletePoint =  async (req, res) => {
-    const query = 'DELETE FROM points WHERE number = $1'
+    const query = 'UPDATE points SET deleted = true WHERE id = $1'
     const number = parseInt(req.params.id)
     const json = await connection(query, [number])
     res.json(json)
